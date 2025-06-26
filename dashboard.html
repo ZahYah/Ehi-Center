@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ehi Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/general.css">
+<link rel="stylesheet" href="styles/index.css">
+<link rel="stylesheet" href="styles/sidebar.css">
+<link rel="stylesheet" href="styles/dashboard.css">
+</head>
+<body>
+  <div class="flex column">
+  <header>
+    <div class="flex justify-between align-center header">
+      <div class="flex  left-side-header column">
+      <img src="images/ehi-logo.png" alt="logo" height="30rem">
+      <p class="logo-text">For Social and Economic Development</p>
+      </div>
+      <div class="flex align-center">
+        <button id="sign-out-btn">Sign Out</button>
+      </div>
+    </div>
+
+  </header> 
+  <main class="flex">
+    <!-- Side-bar -->
+    <div class="sidebar flex column">
+  <div class="flex align-center">
+    <img src="images/dashbord-icon.png" alt="dashbord-icon" height="40rem">
+    Dashboard
+  </div>
+  <div id="user-data">User Data</div>
+  <div>Donor Data</div>
+  <div>Programme Data</div>
+  <div>Disbursement</div>
+  <div>Finance</div>
+  <div>Report</div>
+  <div>Segregation</div>
+  <div>Archive</div>
+  </div>
+<!-- Body -->
+ <div class="flex column main-body">
+  <div>
+    <div class="grid body-data">
+      <div class="items flex column justify-between">
+        <div class="flex justify-center">
+        <p class="title-head">Total No Of Beneficiaries</p></div>
+        <div class="flex justify-between">
+        <div class="flex column title-reg">
+        <p>Registered: 100</p>
+        <p>Enrolled: 124</p>
+        </div>
+        <div><img src="images/contact-icon.png" alt="contact-icon" class="icon"></div>
+        </div>
+      </div>
+      <div class="items flex column justify-between">
+        <div class="flex justify-center
+        column">
+        <div>
+        <p class="title-head">Total No Of Donors</p></div>
+        <div><p class="title-value">100</p></div>
+
+      </div>
+
+        <div class="flex justify-between align-center">
+        <div class="flex column">
+          <p class="title">1 - 31 September, 2024</p>
+        </div>
+        <div><img src="images/donor-heart-icon.png" alt="donor-heart-icon" class="icon"></div>
+        </div>
+      </div>
+     <div class="items flex column justify-between">
+        <div class="flex justify-center">
+        <p class="title-head">Total No Of Food Items</p>
+      </div>
+       <div class="flex column title-reg">
+        <p>Rice: 24</p>
+        <p>Beans: 124</p>
+        </div>
+
+        <div class="flex justify-between align-center">
+        <div class="flex column">
+          <p class="title">1 - 31 September, 2024</p>
+        </div>
+        <div><img src="images/cutlery-icon.png" alt="cutlery-icon" class="icon"></div>
+        </div>
+      </div>
+      <div class="items flex column justify-between">
+        <div class="flex justify-center
+        column">
+        <div>
+        <p class="title-head">Total No Of Clothings</p></div>
+        <div><p class="title-value">50</p></div>
+
+      </div>
+
+        <div class="flex justify-between align-center">
+        <div class="flex column">
+          <p class="title">1 - 31 September, 2024</p>
+        </div>
+        <div><img src="images/cloth-icon.png" alt="cloth-icon" class="icon"></div>
+        </div>
+      </div>
+      <div class="items flex column justify-between">
+        <div class="flex justify-center
+        column">
+        <div>
+        <p class="title-head">Total Amount Of Fund Raised</p></div>
+        <div><p class="title-value"> &#8358; 200,000</p></div>
+
+      </div>
+
+        <div class="flex justify-between align-center">
+        <div class="flex column">
+          <p class="title">1 - 31 September, 2024</p>
+        </div>
+        <div><img src="images/savings-icon.png" alt="savings-icon" class="icon"></div>
+        </div>
+      </div>
+      <div class="items flex column justify-between">
+        <div class="flex justify-center
+        column">
+        <div>
+        <p class="title-head">Total No Of Medications</p></div>
+        <div><p class="title-value">200</p></div>
+
+      </div>
+
+        <div class="flex justify-between align-center">
+        <div class="flex column">
+          <p class="title">1 - 31 September, 2024</p>
+        </div>
+        <div><img src="images/medication-icon.png" alt="medication-icon" class="icon"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div>
+  <canvas id="myChart"></canvas>
+</div> -->
+
+
+
+
+
+
+  
+<div class="chart flex column">
+    <div class="flex chart-top justify-between">
+      <div>
+      <p class="key-indicator">Key indicator:</p>
+   </div>
+        <div class="flex indicator align-center">
+          <div class="rice ellipse"></div>
+        <p>Rice</p>
+      </div>
+        <div class="flex indicator align-center">
+        <div class="beans ellipse"></div>
+          <p>Beans</p>
+      </div>
+        <div class="flex indicator align-center">
+         <div class="clothing ellipse"></div>
+        <p>Clothings</p>
+      </div>
+        <div class="flex indicator align-center">
+       <div class="medicine ellipse"></div>
+        <p>Medicine</p>
+      </div>
+        <div class="flex indicator align-center">
+       <div class="going-out ellipse"></div>
+        <p>No of items going out</p>
+      </div>
+      
+    </div>
+
+      <div class="flex">
+        <img src="./images/Chart.png" alt="chart">
+      </div>
+  
+</div>
+ </div>
+  </main>
+  <footer class="flex">
+     <div class="flex column align-center footer-left">
+      <img src="images/hans-technology.png" alt="hans-technology" width="60rem">
+      <p class="hans-text">Powered by Hans Technology</p>
+    </div>
+
+    <div class="flex align-center copyright">  <p>copyright &copy; ehicentre2024</p>  
+</div>
+  </footer>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="chart.js" type="module"></script>
+<script src="script/dashboard.js"></script>
+</body>
+</html>

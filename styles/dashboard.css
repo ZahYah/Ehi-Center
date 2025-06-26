@@ -1,0 +1,102 @@
+.main-body{
+padding: 0.5rem;
+width: 100%;
+}
+.items{
+  width: 15rem;
+  font-family: 'Inter', sans-serif;
+  height: 7rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);;
+  padding: 0.5rem;
+  border-radius: 12px;
+  border: 1px solid #097B48;
+  box-sizing: border-box;
+}
+.icon {
+  width: 1.2em;
+  height: 1.2em;
+}
+
+.title-head{
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 0.64rem;
+}
+.title-value{
+  font-weight: 700;
+  text-align: center;
+  font-size: 1.5rem;
+}
+.title{
+  font-weight: 600;
+  font-size: 0.75rem;
+  color: #097B48;
+}
+.title-reg{
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+.body-data{
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 1rem;
+  column-gap: 7rem;
+  width: 100%;
+  padding: 1rem;
+  box-sizing: border-box;
+}
+.chart{
+  border: 1px solid #097B48;
+  margin: 2rem auto;
+  box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 15px;
+  padding: 1rem 1.5rem;
+  gap: 1rem;
+}
+.chart-top{
+  width: 60%;
+}
+.key-indicator{
+  color: #097B48;
+  font-weight: 600;
+}
+.ellipse{
+  width: 1rem;
+  height: 0.75rem;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.indicator{
+  height: 1.5rem;
+  gap: 0.5rem;
+}
+.rice{
+  background-color: #FFBE00;
+}
+.beans{
+  background-color: #296015;
+}
+.clothing{
+  background-color: #E98018;
+}
+.medicine{
+  background-color: #097B48;
+}
+.going-out{
+  background-color: #E32424;
+}
+@media(max-width: 992px){
+  .items{
+    width: 12rem;
+  }
+  .body-data{
+    column-gap: 4rem;
+  }
+}
+@media (max-width: 768px){
+  .items{
+    width: 10rem;
+  }
+  .body-data{
+    column-gap: 2.5rem;
+  }
+}

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ehi Center</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles/general.css">
+<link rel="stylesheet" href="styles/index.css">
+<link rel="stylesheet" href="styles/sidebar.css">
+<link rel="stylesheet" href="styles/user.css">
+</head>
+<body>
+  <div class="flex column">
+  <header>
+    <div class="flex justify-between align-center header">
+        <div class="flex by-2 justify-between align-center">
+      <div class="flex  left-side-header column">
+      <img src="images/ehi-logo.png" alt="logo" height="30rem">
+      <p class="logo-text">For Social and Economic Development</p>
+      </div>
+      
+      <div class="middle-side-header flex align-center">
+      <div class="search-box">
+  <input type="text" placeholder="Search">
+  <svg class="icon" viewBox="0 0 24 24">
+    <path d="M21 21l-4.35-4.35M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" fill="none" stroke="currentColor" stroke-width="2"/>
+  </svg>
+      </div>
+        <div>
+          <h2 class="bio-data">Bio - Data</h2></div>
+      </div>
+      </div>
+
+      <div class="flex align-center right-side-header">
+        <button id="sign-out-btn">Sign Out</button>
+      </div>
+
+    </div>
+  </header> 
+  <main class="flex">
+    <!-- Side-bar -->
+    <div class="sidebar flex column">
+  <div class="flex align-center" id="dashboard">
+    <img src="images/dashbord-icon.png" alt="dashbord-icon" height="40rem">
+    Dashboard
+  </div>
+  <div>User Data</div>
+  <div>Donor Data</div>
+  <div>Programme Data</div>
+  <div>Disbursement</div>
+  <div>Finance</div>
+  <div>Report</div>
+  <div>Segregation</div>
+  <div>Archive</div>
+  </div>
+<!-- Body -->
+ <section>
+ <div class="flex justify-between full-width user-top">
+  <div>Score Indicator -</div>
+  <div>
+    <img src="./images/Group 83.png" height="100rem">
+  </div>
+  <div>
+    <button class="add-new-btn">Add New</button>
+  </div>
+ </div>
+ <div>
+  <table>
+    <thead>
+      <td>S/N</td>
+      <td>Date</td>
+      <td>Picture</td>
+      <td>Bio Data</td>
+      <td>Location</td>
+      <td>Poverty Status</td>
+      <td>Pin</td>
+      <td>Score</td>
+      <td>Options</td>
+    </thead>
+    <tbody>
+    <tr>
+      <td>1001</td>
+      <td>2/2/2222</td>
+      <td><img src="./images/pic-1.jpg" alt="pic-1"></td>
+      <td>Lawy</td>
+      <td>Ikeja</td>
+      <td>weeeeee</td>
+      <td>EHC/101</td>
+      <td>8</td>
+      <td>⋮</td>
+    </tr>
+    <tr>
+      <td>1001</td>
+      <td>2/2/2222</td>
+      <td><img src="./images/pic-2.jpg" alt="pic-2"></td>
+      <td>Lawy</td>
+      <td>Ikeja</td>
+      <td>weeeeee</td>
+      <td>EHC/101</td>
+      <td>8</td>
+      <td>⋮</td>
+    </tr>
+  </table>
+  </tbody>
+ </div>
+ </section>
+  </main>
+
+
+  <footer class="flex">
+     <div class="flex column align-center footer-left">
+      <img src="images/hans-technology.png" alt="hans-technology" width="60rem">
+      <p class="hans-text">Powered by Hans Technology</p>
+    </div>
+
+    <div class="flex align-center copyright">  <p>copyright &copy; ehicentre2024</p>  
+</div>
+  </footer>
+</div>
+<script src="script/user.js"></script>
+</body>
+</html>

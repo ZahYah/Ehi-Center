@@ -1,0 +1,51 @@
+*{
+ font-family: "Roboto", sans-serif;
+}
+body{
+  width: 100%;
+  
+}
+/* Header */
+.header{
+  background-color: #097B48;
+  height:12vh;
+  padding: 1rem 1rem; 
+}
+
+.left-side-header{
+align-items: flex-start;
+}
+.logo-text{
+  color: white;
+  margin-left: 2rem;
+  font-size: 0.7rem;
+}
+#sign-out-btn, .login-btn{
+  background-color: white;
+  border: none;
+  width: 7rem;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 0.8rem;
+}
+main{
+  flex: 1;
+}
+
+/* Footer */
+footer{
+background-color:#097B48;
+}
+.copyright{
+  justify-content: flex-start;
+  color: white;
+}
+.footer-left{
+justify-content: flex-start;
+align-items: flex-start;
+  width: 40%;
+}
+.hans-text{
+  color: white;
+}
