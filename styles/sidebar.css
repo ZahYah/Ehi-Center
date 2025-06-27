@@ -7,21 +7,24 @@
   overflow-y: auto;
   position: sticky;
 }
-.sidebar div {
+.sidebar div a{
   font-weight: 600;
   font-family: "Inter", sans-serif;
   cursor: pointer;
+  font-size: 1.1rem;
   width: 100%;
+  color: black;
 }
-.sidebar div:hover{
+.sidebar div a:hover{
   color: #097B48;
+  text-decoration: none;
 }
 @media (max-width: 768px) {
   .sidebar{
     width: 30%;
     overflow-x: hidden;
   }
-  .sidebar div{
+  .sidebar div a{
     font-weight: 600;
     font-size: 12px;
   }
@@ -29,5 +32,6 @@
 @media (max-width: 576px) {
   .sidebar{
     width: 30%;
+    display: none;
   }
 }
