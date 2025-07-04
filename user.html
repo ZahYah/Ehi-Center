@@ -147,14 +147,15 @@
   </div>
   <div class="add-list flex align-center">
     <ul class="flex full-width justify-around">
-      <li> Biodata</li>
-      <li>Location</li>
-      <li>Poverty Status</li>
-      <li>ID</li>
+      <li id="bio-data"> Biodata</li>
+      <li id="location">Location</li>
+      <li id="povertyStats">Poverty Status</li>
+      <li id="identity">ID</li>
     </ul>
   </div>
   <div class="add-body">
-    <div class="grid povertyStats">
+    <!-- Poverty Status -->
+    <div class="grid povertyStats main-content">
       <div class="col-1">
           <h6>Business Activity</h6>
            <div>
@@ -258,6 +259,31 @@
           </div>
       </div>
     </div>
+       <!-- Location --> 
+          <div class="main-content full-width location">
+        <div class="flex column location">  
+           <div>
+            <label>House Number</label>
+            <input type="text">
+          </div>
+           <div>
+            <label>Street</label>
+            <input type="text">
+          </div>
+           <div>
+            <label>Area/ Community</label>
+            <input type="text">
+          </div>
+           <div>
+            <label>State</label>
+            <input type="text">
+          </div>
+           <div>
+            <label>Description of any landmark</label>
+            <textarea name="text" id="description"></textarea>
+          </div>
+      </div>
+     </div>  
      <div class="flex full-width justify-center">
     <button class="add-new-btn">Save</button>
      </div>
@@ -265,6 +291,7 @@
  
   </div>
  </div>
+      
 
   <footer class="flex">
      <div class="flex column align-center footer-left">
