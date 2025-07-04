@@ -57,6 +57,9 @@ input::-webkit-inner-spin-button {
 section {
   padding: 2vw;
 }
+button:active{
+  opacity: 0.6;
+}
 
 main {
   width: 100%;
