@@ -34,6 +34,7 @@
 .bio-data{
   font-family: 'Inter', sans-serif;
   color: white;
+  font-weight: 700;
 }
 .main{
   background-color: white;
@@ -118,13 +119,17 @@ tr td>img{
   background-color: rgba(0,0,0,0.6);
   position: fixed;
   display: none;
- }
+  transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+        
+ 
  .add-content{
   width: 75%;
   margin: 2% auto;
   display: relative;
   background-color: white;
   padding-bottom: 2rem;
+  transition: transform 0.3s ease-in-out;
  }
  .add-body{
   height: 60vh;
@@ -153,20 +158,49 @@ tr td>img{
   margin-top: 1.5rem;
   padding-right: 2rem;
  }
-.add-list{
-  margin-top: 1.5rem;
-  border-top: 1px solid #097B48;
-  border-bottom:1px solid #097B48 ;
-  height: 3rem;
-}
-.add-list li{
-  font-size: 1.2rem;
-    font-weight: 600;
-    cursor: pointer;
-}
-.add-list li:active, .add-list li:hover{
-  color: #097B48;
-}
+  .form-radio{
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 1.25rem;
+            height: 1.25rem;
+            border: 2px solid #6B7280; 
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+
+      .form-radio:checked {
+            border-color: #34D399; 
+        }
+
+        .form-radio:checked::before {
+            content: '';
+            display: block;
+            width: 0.75rem; 
+            height: 0.75rem; 
+            background-color: #34D399; 
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+  .tab-content {
+  display: none; 
+  }
+  .tab-content.active {
+  display: block; 
+  }
+  .tab-button.active {
+  border-bottom: 2px solid #34D399; 
+  color: #097B48; 
+  }
+
 .povertyStats{
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr;

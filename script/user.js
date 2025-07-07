@@ -1,12 +1,13 @@
+   document.addEventListener('DOMContentLoaded', () => {
 const searchDropDown = document.querySelector("#search-modal");
 const dropDownBtn = document.getElementById("search-drop-down");
 const addBtn = document.getElementById("openAddModalBtn");
 const addModal = document.getElementById("add-modal");
-const locationBtn = document.getElementById('location');
-const locationSection = document.querySelector(".location");
-const povertyStatsSection = document.querySelector(".povertyStats");
-const povertyStatsBtn = document.getElementById("povertyStats");
-const bioDataBtn = document.getElementById("bio-data");
+const tabButtons = document.querySelectorAll('.tab-button');
+const tabContents = document.querySelectorAll('.tab-content');
+const saveBtn = document.getElementById('saveBtn');
+
+let currentTabIndex = 0; // Keep track of the current active tab index
 
 
 dropDownBtn.addEventListener("click", function(){
@@ -14,37 +15,72 @@ dropDownBtn.addEventListener("click", function(){
 });
 addBtn.addEventListener("click", function(){
 addModal.style.display="flex";
- showAddModalSection(povertyStatsSection); // Change to Bio-data later
 });
 
-        // Modal Navigation
-        locationBtn.addEventListener("click", function() {
-        showAddModalSection(locationSection);
-        });
-        povertyStatsBtn.addEventListener("click", function() { 
-        showAddModalSection(povertyStatsSection);
-        });
-        bioDataBtn.addEventListener("click", function() {
-        console.log("Biodata clicked - Implement content display");
-        });
+ const showTab = (index) => {
+    // Hide all tab contents and deactivate all tab buttons
+    tabContents.forEach(content => content.classList.remove('active'));
+    tabButtons.forEach(button => button.classList.remove('active'));
 
-        
+    // Show the selected tab content and activate the corresponding button
+    if (tabContents[index]) {
+        tabContents[index].classList.add('active');
+    }
+    if (tabButtons[index]) {
+        tabButtons[index].classList.add('active');
+    }
 
-function hideAllAddModalSections() {
-    povertyStatsSection.style.display = "none";
-    locationSection.style.display = "none";
-}
+    currentTabIndex = index; // Update the current index
 
-function showAddModalSection(sectionToShow) {
-    hideAllAddModalSections(); // Hide all first
-    sectionToShow.style.display = "grid"; // Poverty Stats is grid, Location is flex, etc.
-    // Adjust display property based on the specific section's layout
-    if (sectionToShow === locationSection) {
-        sectionToShow.style.display = "flex";
-    } else if (sectionToShow === povertyStatsSection) {
-        sectionToShow.style.display = "grid";
-    } 
-}
+};
+
+  addBtn.addEventListener('click', () => {
+                addModal.classList.remove('invisible', 'opacity-0');
+                addModal.classList.add('visible', 'opacity-100');
+                addModal.querySelector('.modal-content').classList.remove('scale-95');
+                addModal.querySelector('.modal-content').classList.add('scale-100');
+                showTab(0); // Show the first tab (Biodata) when modal opens
+            });
+
+             tabButtons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    showTab(index);
+                });
+            });
+
+              saveBtn.addEventListener('click', () => {
+                // Implement your save logic here
+                console.log('Saving form data...');
+                // You can collect data from all input fields here
+                const biodata = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    age: document.getElementById('age').value,
+                    gender: document.getElementById('gender').value,
+                };
+                const locationData = {
+                    houseNumber: document.getElementById('houseNumber').value,
+                    street: document.getElementById('street').value,
+                    areaCommunity: document.getElementById('areaCommunity').value,
+                };
+                const idData = {
+                    newPin: document.getElementById('newPin').value,
+                    fingerprintScan: document.getElementById('fingerprintScan').value,
+                    idType: document.querySelector('input[name="idType"]:checked')?.value,
+                };
+
+                console.log('Biodata:', biodata);
+                console.log('Location:', locationData);
+                console.log('ID Data:', idData);
+
+                // For demonstration, close the modal after saving
+                closeModalBtn.click();
+                alert('Form data saved! Check console for details.'); // Using alert for demo, consider a custom message box
+            });
+
+            // Initial display of the first tab and button states
+            showTab(0);
+        });
 
    
         // Cancel Modal
@@ -69,3 +105,4 @@ function showAddModalSection(sectionToShow) {
         });
     });  
 });
+   

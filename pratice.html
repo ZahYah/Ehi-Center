@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multi-Page Modal</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome for icons (e.g., fingerprint) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="styles/user.css">
+    <style>
+        /* Custom styles to ensure Inter font and smooth transitions */
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .modal {
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+        }
+        .modal-content {
+            transition: transform 0.3s ease-in-out;
+        }
+        .tab-content {
+            display: none; /* Hidden by default */
+        }
+        .tab-content.active {
+            display: block; /* Shown when active */
+        }
+        .tab-button.active {
+            border-bottom: 2px solid #34D399; /* Green underline for active tab */
+            color: #34D399; /* Green text for active tab */
+        }
+        input[type="radio"] {
+            /* Hide default radio button */
+            appearance: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            width: 1.25rem; /* 20px */
+            height: 1.25rem; /* 20px */
+            border: 2px solid #6B7280; /* Gray border */
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+            display: inline-block;
+            vertical-align: middle;
+            margin-right: 0.5rem;
+        }
+
+        input[type="radio"]:checked {
+            border-color: #34D399; /* Green border when checked */
+        }
+
+        input[type="radio"]:checked::before {
+            content: '';
+            display: block;
+            width: 0.75rem; /* 12px */
+            height: 0.75rem; /* 12px */
+            background-color: #34D399; /* Green fill when checked */
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center min-h-screen">
+
+    <!-- Button to open the modal -->
+    <button id="openModalBtn" class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75">
+        Open Multi-Page Modal
+    </button>
+
+    <!-- The Modal -->
+    <div id="multiPageModal" class="modal fixed inset-0 bg-gray-600 bg-opacity-50 flex items-center justify-center z-50 opacity-0 invisible">
+        <div class="modal-content bg-white rounded-lg shadow-xl w-11/12 md:w-3/4 lg:w-2/3 xl:w-1/2 transform scale-95 transition-transform duration-300">
+            <!-- Modal Header -->
+            <div class="bg-green-700 text-white p-4 rounded-t-lg flex justify-between items-center">
+                <h2 class="text-xl font-semibold">Add New</h2>
+                <button id="closeModalBtn" class="text-white hover:text-gray-200 text-2xl leading-none">&times;</button>
+            </div>
+
+            <!-- Modal Body -->
+            <div class="p-6">
+                <!-- Top Section with Pin and Fingerprint -->
+                <div class="flex flex-col md:flex-row justify-between items-center mb-6 space-y-4 md:space-y-0 md:space-x-4">
+                    <div class="flex-1 w-full">
+                        <label for="newPin" class="block text-gray-700 text-sm font-bold mb-2">New Pin</label>
+                        <input type="password" id="newPin" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500 rounded-md" placeholder="Enter new pin">
+                    </div>
+                    <div class="flex-1 w-full">
+                        <label for="fingerprintScan" class="block text-gray-700 text-sm font-bold mb-2">Fingerprint</label>
+                        <div class="relative">
+                            <input type="text" id="fingerprintScan" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500 rounded-md pr-10" placeholder="Select to scan fingerprints" readonly>
+                            <span class="absolute inset-y-0 right-0 pr-3 flex items-center text-gray-500">
+                                <i class="fas fa-fingerprint"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <div class="flex border-b border-gray-300 mb-6">
+                    <button class="tab-button active flex-1 py-3 text-center text-gray-600 font-medium hover:text-green-600 focus:outline-none rounded-t-lg" data-tab="biodata">Biodata</button>
+                    <button class="tab-button flex-1 py-3 text-center text-gray-600 font-medium hover:text-green-600 focus:outline-none rounded-t-lg" data-tab="location">Location</button>
+                    <button class="tab-button flex-1 py-3 text-center text-gray-600 font-medium hover:text-green-600 focus:outline-none rounded-t-lg" data-tab="povertyStatus">Poverty Status</button>
+                    <button class="tab-button flex-1 py-3 text-center text-gray-600 font-medium hover:text-green-600 focus:outline-none rounded-t-lg" data-tab="id">ID</button>
+                </div>
+
+                <!-- Tab Contents -->
+                <div id="tabContents">
+                    <!-- Biodata Tab Content -->
+                    <div id="biodata" class="tab-content active p-4">
+                        <h3 class="text-lg font-semibold mb-4">Biodata Information</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="firstName" class="block text-gray-700 text-sm font-bold mb-2">First Name</label>
+                                <input type="text" id="firstName" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500 rounded-md">
+                            </div>
+                            <div>
+                                <label for="lastName" class="block text-gray-700 text-sm font-bold mb-2">Last Name</label>
+                                <input type="text" id="lastName" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500 rounded-md">
+                            </div>
+                            <div>
+                                <label for="age" class="block text-gray-700 text-sm font-bold mb-2">Age</label>
+                                <input type="number" id="age" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500 rounded-md">
+                            </div>
+                            <div>
+                                <label for="gender" class="block text-gray-700 text-sm font-bold mb-2">Gender</label>
+                                <input type="text" id="gender" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500 rounded-md">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Location Tab Content -->
+                    <div id="location" class="tab-content p-4">
+                        <h3 class="text-lg font-semibold mb-4">Location Details</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <label for="houseNumber" class="block text-gray-700 text-sm font-bold mb-2">House Number</label>
+                                <input type="text" id="houseNumber" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500 rounded-md">
+                            </div>
+                            <div>
+                                <label for="street" class="block text-gray-700 text-sm font-bold mb-2">Street</label>
+                                <input type="text" id="street" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500 rounded-md">
+                            </div>
+                            <div>
+                                <label for="areaCommunity" class="block text-gray-700 text-sm font-bold mb-2">Area/ Community</label>
+                                <input type="text" id="areaCommunity" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-500 rounded-md">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Poverty Status Tab Content -->
+                    <div id="povertyStatus" class="tab-content p-4">
+                        <!-- <div class="grid povertyStats main-content">
+      <div class="col-1">
+          <h6>Business Activity</h6>
+           <div>
+            <label>Nature Of Business</label>
+            <input type="text">
+          </div>
+           <div>
+            <label>Size Of Business (Estimated Value)</label>
+            <input type="text">
+          </div>
+           <div>
+            <label>Location Of Business</label>
+            <input type="text">
+          </div>
+           <div>
+            <label>Daily Income</label>
+            <input type="text">
+          </div>
+      </div>
+      <div class="col-2">
+          <h6>Family</h6>
+           <div>
+            <label>Marital Status</label>
+            <input type="text">
+          </div>
+           <div>
+            <label>Number Of Children under 20 years</label>
+            <input type="text">
+          </div>
+           <div>
+            <label>Age of Husband</label>
+            <input type="text">
+          </div>
+           <div>
+            <label>Nature of Job occupation of husband</label>
+            <input type="text">
+          </div>
+          <div>
+            <label>Number of children earning income</label>
+            <input type="text">
+          </div>
+      </div>
+          <div class="col-3">
+          <h6>Dwelling Place</h6>
+           <div>
+            <label>Own home or rent</label>
+            <input type="text">
+          </div>
+           <div>
+            <label>Size of dwelling place(Number of rooms)</label>
+            <input type="text">
+          </div>
+           <div>
+            <label>Age of Husband</label>
+            <input type="text">
+          </div>
+           <div>
+            <label>Nature of Job occupation of husband</label>
+            <input type="text">
+          </div>
+          <div>
+            <label>Number of children earning income</label>
+            <input type="text">
+          </div>
+      </div>
+       <div class="col-4">
+          <h6>Nutrition</h6>
+           <div>
+            <label>Main type of meal</label>
+            <input type="text">
+          </div>
+      </div>
+       <div class="col-5">
+          <h6>Level of Formal Education</h6>
+           <div>
+            <label>Non-primary</label>
+            <input type="text">
+          </div>
+           <div>
+            <label>Half-Primary</label>
+            <input type="text">
+          </div>
+           <div>
+            <label>Full-Primary</label>
+            <input type="text">
+          </div>
+           <div>
+            <label>Half Secondary</label>
+            <input type="text">
+          </div>
+          <div>
+            <label>Number of children earning income</label>
+            <input type="text">
+          </div>
+      </div>
+        <div class="col-6">
+          <h6>Health Status</h6>
+           <div>
+            <label>Any major illness?</label>
+            <input type="text">
+          </div>
+      </div>
+                          </div> -->
+                    </div>
+
+                    <!-- ID Tab Content -->
+                    <div id="id" class="tab-content p-4">
+                        <h3 class="text-lg font-semibold mb-4">ID Verification</h3>
+                        <p class="text-gray-700 mb-4">Please select one of each of the following</p>
+                        <div class="space-y-3">
+                            <label class="inline-flex items-center">
+                                <input type="radio" class="form-radio" name="idType" value="nin" checked>
+                                <span class="ml-2 text-gray-700">NIN (National Identification Number)</span>
+                            </label> <br>
+                            <label class="inline-flex items-center">
+                                <input type="radio" class="form-radio" name="idType" value="driversLicense">
+                                <span class="ml-2 text-gray-700">Drivers License</span>
+                            </label>
+                            
+                            <br>
+                            <label class="inline-flex items-center">
+                                <input type="radio" class="form-radio" name="idType" value="votersCard">
+                                <span class="ml-2 text-gray-700">Voters Card</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Modal Footer (Optional: Add Next/Previous/Save buttons here) -->
+            <div class="bg-gray-100 p-4 rounded-b-lg flex justify-end space-x-2">
+                <button id="prevBtn" class="px-4 py-2 bg-gray-300 text-gray-800 rounded-md hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-opacity-75 rounded-md">Previous</button>
+                <button id="nextBtn" class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-75 rounded-md">Next</button>
+                <button id="saveBtn" class="px-4 py-2 bg-green-600 text-white rounded-md hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-opacity-75 rounded-md">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const openModalBtn = document.getElementById('openModalBtn');
+            const closeModalBtn = document.getElementById('closeModalBtn');
+            const multiPageModal = document.getElementById('multiPageModal');
+            const tabButtons = document.querySelectorAll('.tab-button');
+            const tabContents = document.querySelectorAll('.tab-content');
+            const prevBtn = document.getElementById('prevBtn');
+            const nextBtn = document.getElementById('nextBtn');
+            const saveBtn = document.getElementById('saveBtn');
+
+            let currentTabIndex = 0; // Keep track of the current active tab index
+
+            // Function to show a specific tab
+            const showTab = (index) => {
+                // Hide all tab contents and deactivate all tab buttons
+                tabContents.forEach(content => content.classList.remove('active'));
+                tabButtons.forEach(button => button.classList.remove('active'));
+
+                // Show the selected tab content and activate the corresponding button
+                if (tabContents[index]) {
+                    tabContents[index].classList.add('active');
+                }
+                if (tabButtons[index]) {
+                    tabButtons[index].classList.add('active');
+                }
+
+                currentTabIndex = index; // Update the current index
+
+                // Manage visibility of Previous/Next/Save buttons
+                prevBtn.style.display = (currentTabIndex === 0) ? 'none' : 'inline-block';
+                nextBtn.style.display = (currentTabIndex === tabButtons.length - 1) ? 'none' : 'inline-block';
+                saveBtn.style.display = (currentTabIndex === tabButtons.length - 1) ? 'inline-block' : 'none';
+            };
+
+            // Open Modal
+            openModalBtn.addEventListener('click', () => {
+                multiPageModal.classList.remove('invisible', 'opacity-0');
+                multiPageModal.classList.add('visible', 'opacity-100');
+                multiPageModal.querySelector('.modal-content').classList.remove('scale-95');
+                multiPageModal.querySelector('.modal-content').classList.add('scale-100');
+                showTab(0); // Show the first tab (Biodata) when modal opens
+            });
+
+            // Close Modal
+            closeModalBtn.addEventListener('click', () => {
+                multiPageModal.classList.remove('visible', 'opacity-100');
+                multiPageModal.classList.add('invisible', 'opacity-0');
+                multiPageModal.querySelector('.modal-content').classList.remove('scale-100');
+                multiPageModal.querySelector('.modal-content').classList.add('scale-95');
+            });
+
+            // Close modal when clicking outside the content
+            multiPageModal.addEventListener('click', (e) => {
+                if (e.target === multiPageModal) {
+                    closeModalBtn.click();
+                }
+            });
+
+            // Tab navigation
+            tabButtons.forEach((button, index) => {
+                button.addEventListener('click', () => {
+                    showTab(index);
+                });
+            });
+
+            // Previous button functionality
+            prevBtn.addEventListener('click', () => {
+                if (currentTabIndex > 0) {
+                    showTab(currentTabIndex - 1);
+                }
+            });
+
+            // Next button functionality
+            nextBtn.addEventListener('click', () => {
+                if (currentTabIndex < tabButtons.length - 1) {
+                    showTab(currentTabIndex + 1);
+                }
+            });
+
+            // Save button functionality (for the last tab)
+            saveBtn.addEventListener('click', () => {
+                // Implement your save logic here
+                console.log('Saving form data...');
+                // You can collect data from all input fields here
+                const biodata = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    age: document.getElementById('age').value,
+                    gender: document.getElementById('gender').value,
+                };
+                const locationData = {
+                    houseNumber: document.getElementById('houseNumber').value,
+                    street: document.getElementById('street').value,
+                    areaCommunity: document.getElementById('areaCommunity').value,
+                };
+                const idData = {
+                    newPin: document.getElementById('newPin').value,
+                    fingerprintScan: document.getElementById('fingerprintScan').value,
+                    idType: document.querySelector('input[name="idType"]:checked')?.value,
+                };
+
+                console.log('Biodata:', biodata);
+                console.log('Location:', locationData);
+                console.log('ID Data:', idData);
+
+                // For demonstration, close the modal after saving
+                closeModalBtn.click();
+                alert('Form data saved! Check console for details.'); // Using alert for demo, consider a custom message box
+            });
+
+            // Initial display of the first tab and button states
+            showTab(0);
+        });
+    </script>
+</body>
+</html>
